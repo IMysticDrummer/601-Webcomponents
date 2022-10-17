@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hello-world WC</title>
+  </head>
+  <body>
+    <!--     
+      1- create a class HelloWorld. DONE
+      2- Define it's constructor. DONE
+      3- Define it's connectedCallback lifecycle hook to write some text. DONE
+      4- Register the element so you can use it. DONE
+      5- Use the element. DONE
+      6- Make the attributeChangedCallback work!
+    -->
+
+    <!-- Instancia del webcomponent -->
+    <hello-world test="valor de ejemplo"></hello-world>
+
+    <script>
+      //1- Crear una clase que genere nuestro web componente que extienda de una clase HTMLElement del navegador
+      class HelloWorld extends HTMLElement {
+        constructor(){
+          super();
+          console.log('constructor');
+        };
+
+        //Función estática que prepara la observación de los atributos que queremos.
+        //Si no creamos esta función, la función attributeChangedCallback no hará nada.
+        //IMPORTANTE... Los nombres de las siguientes funciones dentro de un web component son nombres reservados.
+        static get observedAttributes() {
+          return ['test'];
+        };
+        //Cuando cambie algún atributo. Recibe tres argumentos: nombre del atributo que cambia, el valor antiguo y el nuevo
+        attributeChangedCallback(name, oldValue, newValue) {
+          console.log(`${name} chanded from ${oldValue} to ${newValue}`);
+        };
+        
+        //Qué hacer cuando se conecte al DOM
+        connectedCallback() {
+          console.log('connectedCallback');
+
+          this.innerHTML='Hello!!!';
+        };
+
+        //cuando sale de dom
+        disconnectedCallback() {
+          console.log('disconnectedCallback');
+          //MUY BUENA PRÁCTICA LIBERAR LOS EVENT LISTENERS PARA LIBERAR MEMORIA
+        };
+
+      };
+      //Crear una etiqueta html nueva que se llama "hello-world" que representa la clase HelloWorld.
+      //Recordar que un webcomponent tiene que tener u
+      window.customElements.define('hello-world', HelloWorld);
+    </script>
+  </body>
+</html>
