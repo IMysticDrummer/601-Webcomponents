@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lazy-image WC</title>
+  </head>
+  <body>
+    <!-- Template es un HTML que no se va a ver en el navegador hasta que lo capturemos y utilicemos en javascript -->
+    <template>
+      <h1>Hola keepcoding!</h1>
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/739px-Firefox_logo%2C_2019.svg.png"
+        alt="example-alt"
+      />
+    </template>
+  </body>
+
+  <!-- Usamos nuestro nuevo componente -->
+  <lazy-image></lazy-image>
+  <lazy-image image="http://pbs.twimg.com/profile_images/1360169463455379459/v7xAQtTB.jpg"></lazy-image>
+
+  <script>
+    // 2- Define the LazyImage class. DONE
+    // 3- Using a document selector method, target the template DOM node.
+    // 4- Create a clone of that DOM node, and set the properties that you need. Try to draw this image --> https://pbs.twimg.com/profile_images/1360169463455379459/v7xAQtTB.jpg
+    // 5- Append the clone to LazyImage component.
+    // 6- Use the lazy-image component!!
+
+    class LazyImage extends HTMLElement{
+      constructor(){
+        super();
+
+        this.image=this.getAttribute('image') || 'https://upload.wikimedia.org/wikipedia/commons/6/64/Ejemplo.png';
+      };
+
+      connectedCallback(){
+        const template=document.querySelector('template');
+
+        const clone=template.content.cloneNode(true);
+
+        //clone.querySelector('img').src='http://pbs.twimg.com/profile_images/1360169463455379459/v7xAQtTB.jpg';
+        clone.querySelector('img').src=this.image;
+        this.appendChild(clone);
+      };
+    };
+
+    window.customElements.define('lazy-image', LazyImage);
+  </script>
+</html>

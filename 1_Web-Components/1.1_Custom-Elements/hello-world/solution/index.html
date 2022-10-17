@@ -27,9 +27,10 @@
           console.log('constructor');
         };
 
+        //IMPORTANTE... Los nombres de las siguientes funciones dentro de un web component son nombres reservados.
         //Función estática que prepara la observación de los atributos que queremos.
         //Si no creamos esta función, la función attributeChangedCallback no hará nada.
-        //IMPORTANTE... Los nombres de las siguientes funciones dentro de un web component son nombres reservados.
+        //Esta función REACCIONA ante los cambios en los atributos observados.
         static get observedAttributes() {
           return ['test'];
         };
