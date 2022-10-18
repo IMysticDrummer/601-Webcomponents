@@ -44,14 +44,15 @@ class InputAction extends HTMLElement{
 
   emitSendTextEvent() {
     //Get the input value
-    const inputValue=this.shadowRoot.querySelector('input').value;
+    const inputElement=this.shadowRoot.querySelector('input');
 
-    if (inputValue) {
+    if (inputElement.value) {
       const event=new CustomEvent('sendText', {
-        detail: inputValue
+        detail: inputElement.value
       });
       
       this.dispatchEvent(event);
+      inputElement.value='';
     }
 
   };

@@ -10,7 +10,14 @@
 
   <input-action placeholder="Añade un nuevo TODO">
   </input-action>
-  
+
   <script src="./input-action.js"></script>
+  <script>
+    
+    const inputActionElement=document.querySelector('input-action');
+    inputActionElement.addEventListener('sendText', (event)=>{
+      console.log(event.detail);
+    });
+  </script>
 </body>
 </html>
