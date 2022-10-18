@@ -118,3 +118,7 @@ etiqueta "slot", para que lo sustituya. Ejemplo:
     </div>
   `;
 ```
+
+## Patrón medidador:
+Cuando un elemento padre sirve de comunicación a dos hijos.  
+El ejemplo de TODO-List-App sería el propio items-list-app.js.

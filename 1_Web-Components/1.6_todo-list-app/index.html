@@ -4,20 +4,23 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TODO-List-APP</title>
+  <title>Document</title>
 </head>
 <body>
+  
+  <items-list-app title="Tareas de hoy"></items-list-app>
 
-  <input-action placeholder="Añade un nuevo TODO">
-  </input-action>
+  <!-- <input-action icon="🔍" placeholder="cositas para hacer"></input-action> -->
 
-  <script src="./input-action.js"></script>
-  <script>
-    
-    const inputActionElement=document.querySelector('input-action');
-    inputActionElement.addEventListener('sendText', (event)=>{
-      console.log(event.detail);
-    });
-  </script>
+  <style>
+    :root{
+      --item-back-color: lightblue;
+    }
+  </style>
+  <!-- <list-item text="hola mundo!!"></list-item> -->
+  
+  <script type="module" src="./items-list-app.js"></script>
+  <!-- <script type="module" src="./list-item.js"></script> -->
+
 </body>
 </html>
